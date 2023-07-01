@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { Card, Button, Input } from "../components/ui";
+import { Global } from "@emotion/react";
+import { GlobalContext } from "../App";
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +18,8 @@ const LoginForm = styled.form`
   gap: 12px;
 `;
 
-function LoginPage({ onLogin }) {
+function LoginPage() {
+  const { onLogin } = useContext(GlobalContext);
   const [name, setName] = useState("");
   const navigate = useNavigate();
 

@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { FaTrashAlt } from "react-icons/fa";
 import { Card } from "./ui";
+import { useContext } from "react";
+import { GlobalContext } from "../App";
 
 const CardContainer = styled(Card)`
   width: 180px;
@@ -31,7 +33,8 @@ const Author = styled.span`
   color: #999999;
 `;
 
-function Note({ note, user, onDelete }) {
+function Note({ note }) {
+  const { user, onDelete } = useContext(GlobalContext);
   return (
     <CardContainer>
       <Content>{note.body}</Content>
