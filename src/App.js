@@ -7,7 +7,7 @@ import LoginPage from "./pages/LoginPage";
 export const GlobalContext = createContext();
 
 export default function App() {
-  const [user, setuser] = useState("");
+  const [user, setUser] = useState("");
   const [notes, setNotes] = useLocalStorage("notes", []);
 
   const handleCreate = (content) => {
@@ -24,8 +24,8 @@ export default function App() {
     notes,
     onCreate: handleCreate,
     onDelete: handleDelete,
-    onLogin: (user) => setuser(user),
-    onLogout: () => setuser(""),
+    onLogin: (user) => setUser(user),
+    onLogout: () => setUser(""),
   };
 
   return (
