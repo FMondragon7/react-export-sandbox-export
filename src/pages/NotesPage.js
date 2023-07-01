@@ -4,7 +4,8 @@ import styled from "@emotion/styled";
 import { Button } from "../components/ui";
 import NoteForm from "../components/NoteForm";
 import NoteList from "../components/NoteList";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { GlobalContext } from "../App";
 
 const Container = styled.div`
   display: flex;
@@ -19,8 +20,9 @@ const LogoutButton = styled(Button)`
   right: 8px;
 `;
 
-function NotesPage({ user, notes, onLogout, onDelete, onCreate }) {
+function NotesPage({ notes, onDelete }) {
   const navigate = useNavigate();
+  const { user, onLogout } = useContext(GlobalContext);
 
   useEffect(() => {
     if (!user) navigate("/login");
@@ -29,7 +31,7 @@ function NotesPage({ user, notes, onLogout, onDelete, onCreate }) {
   return (
     <Container>
       <LogoutButton onClick={onLogout}>Logout</LogoutButton>
-      <NoteForm onCreate={onCreate} user={user} />
+      <NoteForm />
       <NoteList notes={notes} user={user} onDelete={onDelete} />
     </Container>
   );

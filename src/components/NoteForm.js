@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Card, TextArea, Button } from "./ui";
+import { GlobalContext } from "../App";
 
 const Form = styled.form`
   display: flex;
@@ -11,7 +12,8 @@ const Form = styled.form`
   }
 `;
 
-function NoteForm({ onCreate, user }) {
+function NoteForm() {
+  const { user, onCreate } = useContext(GlobalContext);
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
